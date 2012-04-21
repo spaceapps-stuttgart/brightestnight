@@ -1,12 +1,26 @@
 #include <stdio.h>
 #include <sys/stat.h>
 #include <stdlib.h>
-void main(){
-        char *name ="Image_bgr.raw";
+
+void main(int argc, char *argv[]){
+    char *name = argv[1];
     FILE *file;
     char *buffer;
     unsigned long fileLen;
+    int imageWidth, imageHeight;
 
+   if (argc !=4) {
+	fprintf(stderr, "Usage: %s <pathname> <imageWidth> <imageHeight>\n", argv[0]);
+	exit(EXIT_FAILURE);
+   }     
+
+   if ((imageWidth = atoi(argv[2])) && (imageHeight = atoi(argv[3]) <0)) {
+	perror("width or height wrong! You are made of stupid!");
+	exit(EXIT_FAILURE);
+   } 
+ 
+
+    
     //Open file
     file = fopen(name, "rb");
     if (!file)
@@ -39,4 +53,5 @@ void main(){
 
 
     free(buffer);
+   // return 0;
 }
