@@ -10,7 +10,7 @@ avgB = 0
 avgG = 0
 avgR = 0
 def open_file():
-    f = open('Image_bgr.raw', 'r')
+    f = open('Image_black3raw', 'r')
     raw_data = f.read()
     return raw_data
     
