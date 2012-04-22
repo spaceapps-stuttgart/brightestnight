@@ -1,0 +1,12 @@
+This is a brief proof of concept of NASAs Space Apps Challenge 'brightest night'
+http://spaceappschallenge.org/challenge/brightest-night/
+
+We are using a Logitech c920 for gathering images. The firmware on the camera itself is unmodified.
+We are currently using quvcview to get a camera snapshot, sadly we can't provide an automatic procedure.
+
+We use some pretty custom settings in it, howsoever we disable autofocus and any other kind of automatic features. 
+The camera output is BGR3, 5/1fps, RAW image format and a resolution of 1920*1080 (aka. 1080p) howsoever the output has a resolution of 1280*720(aka. 720p).
+
+The main.py script iterates over the raw file and calculates an average RGB Value for the whole picture.
+
+credits to the whole the team mentioned on this git page.
