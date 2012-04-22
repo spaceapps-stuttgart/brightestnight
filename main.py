@@ -16,23 +16,23 @@ def open_file(filename):
 
 
 data = open_file('Image_black.raw')
-
+step = 96 #modify this value to get a faster but therefore more unprecise result
 #Blue Data
-for i in range(0, len(data), 96):
+for i in range(0, len(data), step): 
     value = data[i]
     value = ord(value)
     bdata.append(data[value])
     avgB += value
 
 #Green Data
-for i in range (1, len(data), 96):    
+for i in range (1, len(data), step):    
     value = data[i]
     value = ord(value)
     gdata.append(value)
     avgG += value
 
 #Red Data
-for i in range(2, len(data), 96):
+for i in range(2, len(data), step):
     value = data[i]
     value = ord(value)
     rdata.append(value)
