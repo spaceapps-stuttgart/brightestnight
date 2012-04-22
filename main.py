@@ -1,5 +1,9 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
+import color
+import sys
+
+
 bdata = []
 gdata = []
 rdata = []
@@ -8,15 +12,24 @@ avgB = 0
 avgG = 0
 avgR = 0
 
+def usage():
+    print 'It looks like something went wrong!\n'
+    print "Usage:\t"+sys.argv[0]+" [imagename]"
+
 #opening the file from guvcview
 def open_file(filename):
     f = open(filename, 'r')
     raw_data = f.read()
     return raw_data
 
+try:
+    data = open_file(sys.argv[1])
+except IndexError:
+    usage()
+    exit(0)
+    
+step = 96 #modify this value to get a faster but therefore more unprecise result NOTE! this value must be a multiple of 3!
 
-data = open_file('Image_black.raw')
-step = 96 #modify this value to get a faster but therefore more unprecise result
 #Blue Data
 for i in range(0, len(data), step): 
     value = data[i]
@@ -44,7 +57,9 @@ avgG = avgG / len(gdata)
 avgR = avgR / len(rdata)
 
 
-print avgB, avgG, avgR
-
-
+#print avgB, avgG, avgR
+cl = color.Color()
+print 'Average Blue:\t ['+cl.foreground_color('blue')+('|'*(avgB/10))+(' '*((255-avgB)/10))+cl.foreground_color('default')+']  '+str(avgB)+'/255'
+print 'Average Green:\t ['+cl.foreground_color('green')+('|'*(avgG/10))+(' '*((255-avgG)/10))+cl.foreground_color('default')+']  '+str(avgG)+'/255'
+print 'Average Red:\t ['+cl.foreground_color('red')+('|'*(avgR/10))+(' '*((255-avgR)/10))+cl.foreground_color('default')+']  '+str(avgR)+'/255'
 
