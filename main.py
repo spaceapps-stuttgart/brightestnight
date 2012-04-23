@@ -3,7 +3,7 @@
 import color
 import sys
 
-
+__author__ = 'momo'
 bdata = []
 gdata = []
 rdata = []
@@ -57,9 +57,16 @@ avgG = avgG / len(gdata)
 avgR = avgR / len(rdata)
 
 
-#print avgB, avgG, avgR
+#outputs for each channel
 cl = color.Color()
 print 'Average Blue:\t ['+cl.foreground_color('blue')+('|'*(avgB/10))+(' '*((255-avgB)/10))+cl.foreground_color('default')+']  '+str(avgB)+'/255'
 print 'Average Green:\t ['+cl.foreground_color('green')+('|'*(avgG/10))+(' '*((255-avgG)/10))+cl.foreground_color('default')+']  '+str(avgG)+'/255'
 print 'Average Red:\t ['+cl.foreground_color('red')+('|'*(avgR/10))+(' '*((255-avgR)/10))+cl.foreground_color('default')+']  '+str(avgR)+'/255'
+
+#overall output
+
+total = avgB+avgG+avgR
+percent = round(1.0*total/765*100, 2)
+print 'Total: \t\t'+str(total)+'/765 ('+str(percent)+'%)'
+
 
