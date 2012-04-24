@@ -10,3 +10,7 @@ The camera output is BGR3, 5/1fps, RAW image format and a resolution of 1920*108
 The main.py script iterates over the raw file and calculates an average RGB Value for the whole picture.
 
 credits to the whole the team mentioned on this git page.
+
+Usage: ./main.py <filename> 
+
+(Example files can be found in examples/)
